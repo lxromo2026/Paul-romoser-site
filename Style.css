@@ -329,3 +329,13 @@ footer{
   .hero-grid{ grid-template-columns: 1fr; }
   .grid-3{ grid-template-columns: 1fr; }
 }
+
+.headshot{
+  width: 100%;
+  max-width: 320px;
+  display: block;
+  margin: 0 auto 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(223,217,207,.18);
+  box-shadow: 0 18px 30px rgba(0,0,0,.25);
+}
