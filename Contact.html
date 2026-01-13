@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Connect | Paul Romoser, LMFT</title>
+  <meta name="description" content="Contact Paul Romoser, LMFT. Reach out for therapy, speaking engagements, youth ministry & leadership consulting, or general inquiries." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <span class="mark"></span>
+        <span>Paul Romoser, LMFT</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a class="active" href="contact.html">Connect</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero" style="padding-bottom:12px;">
+    <div class="container">
+      <div class="card hero-card">
+        <div class="kicker">Connect</div>
+        <h1>Reach out</h1>
+        <p class="lead">
+          Use the form below to inquire about therapy, speaking, or youth ministry &amp; leadership consulting.
+          You’ll receive a response as soon as possible.
+        </p>
+        <div id="successMessage" class="notice" style="display:none; margin-top:14px;">
+          <strong>Thanks — I’ll get back to you soon!</strong>
+        </div>
+
+        <p class="small" style="margin-top:12px;">
+          Please avoid sharing sensitive personal details in the form. If this is an emergency, call 911 (US) or your local emergency number.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="card form-wrap">
+
+        <!-- Netlify Form -->
+        <!-- After deploy: Netlify -> Site settings -> Forms -> Notifications -> add Paul's email -->
+        <form name="connect" method="POST" data-netlify="true" action="/contact.html?success=1">
+          <input type="hidden" name="form-name" value="connect" />
+
+          <label for="firstName">First Name</label>
+          <input id="firstName" name="firstName" type="text" placeholder="First name" required />
+
+          <label for="lastName">Last Name</label>
+          <input id="lastName" name="lastName" type="text" placeholder="Last name" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+          <label for="reason">Reason for reaching out</label>
+          <select id="reason" name="reason" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Therapy</option>
+            <option>Speaking Engagement</option>
+            <option>Youth Ministry &amp; Leadership Consulting</option>
+            <option>General Inquiry</option>
+          </select>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="How can I help?" required></textarea>
+
+          <div class="button-row" style="margin-top:16px;">
+            <button class="btn wine" type="submit">Send Message</button>
+            <a class="btn" href="index.html">Back to Home</a>
+          </div>
+
+          <p class="small" style="margin-top:12px;">
+            By submitting this form, you acknowledge this is not an emergency service.
+          </p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="y"></span> Paul Romoser, LMFT • All rights reserved</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Show confirmation message when redirected back with ?success=1
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("success") === "1") {
+      const el = document.getElementById("successMessage");
+      if (el) el.style.display = "block";
+      // Optional: remove query param from URL after showing message
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, "/contact.html");
+      }
+    }
+  </script>
+</body>
+</html>
